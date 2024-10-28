@@ -1,0 +1,49 @@
+name: CI for Trash Image Classification
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'  # Specify your desired Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Download dataset
+      run: |
+        mkdir -p dataset
+        git clone https://huggingface.co/datasets/garythung/trashnet ./dataset
+        unzip dataset/trashnet/dataset-original.zip -d dataset
+
+    - name: Run Data Preparation and Exploration
+      run: |
+        jupyter nbconvert --to notebook --execute "a. data prep_explo.ipynb" --output "a. data prep_explo".ipynb
+
+    - name: Run Data Splitting
+      run: |
+        jupyter nbconvert --to notebook --execute "b. data split.ipynb" --output "b. data split".ipynb
+
+    - name: Run Data Augmentation
+      run: |
+        jupyter nbconvert --to notebook --execute "c. augmentation".ipynb --output "c. augmentation"_output.ipynb
+
+    - name: Run Model Training
+      run: |
+        jupyter nbconvert --to notebook --execute "d. modeling".ipynb --output "d. modeling"_output.ipynb
