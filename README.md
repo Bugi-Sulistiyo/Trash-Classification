@@ -31,3 +31,6 @@ Data augmentation is handled in a separate script to reduce computational resour
 
 ## Checkpoint and Model Saving
 Model checkpoints and saving processes are implemented within the training script. The saved models will be located in the designated output directory after training is complete in form of .h5 and .keras.
+
+## Finding
+The dataset utilized is relatively small, suggesting a strong need for data augmentation to enhance both its size and heterogeneity. Implementing augmentation techniques can significantly improve model performance by introducing variability in the training data. Additionally, the inclusion of the "trash" label may be reconsidered, as it does not align with the other categories and could introduce noise into the training process. Therefore, it may be beneficial to exclude this label to focus on the more relevant classes in the dataset.
