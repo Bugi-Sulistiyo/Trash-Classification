@@ -26,7 +26,7 @@ jobs:
     - name: Download dataset
       run: |
         mkdir -p dataset
-        git clone https://${{secrets.HF_ACC_TOKEN}}@hf.co/datasets/garythung/trashnet ./dataset
+        git clone https://${{secrets.HF_ACC_TOKEN}}@hf.co/datasets/garythung/trashnet ./dataset/trashnet
 
     - name: Run Data Preparation and Exploration
       run: |
