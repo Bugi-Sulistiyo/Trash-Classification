@@ -6,3 +6,4 @@ scikit-learn==1.5.2
 wandb==0.18.5
 huggingface-hub==0.26.1
 tensorflow==2.18.0
+nbconvert==7.16.4
