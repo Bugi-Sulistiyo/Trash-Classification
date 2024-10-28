@@ -56,9 +56,9 @@ def create_dataset(imgs_path:pd.DataFrame, image_size:tuple, batch_size:int):
     # create the dataset in the form of (image, label)
     dataset = tf.data.Dataset.from_tensor_slices((imgs_path["img_path"].values, imgs_path["label"].values))
     # implement the load_img function on the dataset
-    dataset = dataset.map(lambda path, label: load_img(path, label, image_size))
+    dataset = dataset.map(lambda path, label: load_img(path, label, image_size), num_parallel_calls=tf.data.experimental.AUTOTUNE)
     # shuffle the dataset
     dataset = dataset.shuffle(buffer_size=len(imgs_path))
     # make the dataset into batches
-    dataset = dataset.batch(batch_size)
+    dataset = dataset.batch(batch_size).prefetch(tf.data.experimental.AUTOTUNE)
     return dataset
