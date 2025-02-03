@@ -9,7 +9,7 @@ You can find the necessary libraries and packages in the `requirements.txt` file
 ## Dataset Information
 The dataset used for this project can be found at the following URL: [TrashNet Dataset](https://huggingface.co/datasets/garythung/trashnet).
 
-The zipped dataset is stored in the `dataset` directory of this project.
+The zipped dataset is stored in the `dataset` directory of this project. But, this directory is not pushed to git.
 
 ## Environment Setup
 To set up your environment, you can use the following command to create a new conda environment (make sure you have conda installed):
